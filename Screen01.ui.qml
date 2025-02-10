@@ -1,13 +1,4 @@
-
-
-/*
-This is a UI file (.ui.qml) that is intended to be edited in Qt Design Studio only.
-It is supposed to be strictly declarative and only uses a subset of QML. If you edit
-this file manually, you might introduce QML code that is not supported by Qt Design Studio.
-Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on .ui.qml files.
-*/
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
 
 Rectangle {
@@ -48,12 +39,17 @@ Rectangle {
         source: "fonts/Bangers-Regular.ttf"
     }
 
+    FontLoader {
+        id: zenDots
+        source: "fonts/ZenDots-Regular.ttf"
+    }
+
     StackLayout {
         id: stackLayout
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: nav.top
+        anchors.bottom: navBar.top
         anchors.leftMargin: 0
         anchors.topMargin: 0
 
@@ -65,11 +61,10 @@ Rectangle {
 
         }
 
-
     }
 
     Rectangle {
-        id: nav
+        id: navBar
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
@@ -106,7 +101,9 @@ Rectangle {
                     onClicked: stackLayout.currentIndex = 1 // Cambia alla pagina Statistiche
                 }
             }
+
         }
     }
+
 }
 
