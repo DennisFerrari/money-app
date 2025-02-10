@@ -267,7 +267,7 @@ Rectangle {
         width: 390
         height: 40
         Text {
-            text: qsTr("CATEGORIA")
+            text: qsTr("Categorie")
             color: "white"
             anchors.centerIn: parent
         }
