@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts
 
 Popup {
     id: popup
@@ -39,7 +38,7 @@ Popup {
             model: rectangle.isEntry ? ["Stipendio", "Prestiti", "Risparmi", "Vincite"] : ["Affitto/Mutuo", "Bollette", "Spesa", "Benzina"]
             delegate: Button {
                 id: buttons
-                width: catColumn.width
+                width: parent.width
                 height: 40
 
                 Text {
@@ -52,15 +51,13 @@ Popup {
                     color: "#3c9302"
                     anchors.fill: parent
                 }
-
-                Connections {
                     onClicked: {
                         selectedIndex = modelData
                         console.log("Hai premuto: " + modelData
                                     + " (Index: " + model.index + ")")
                         popup.close()
                     }
-                }
+
             }
         }
     }

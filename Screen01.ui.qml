@@ -1,13 +1,4 @@
-
-
-/*
-This is a UI file (.ui.qml) that is intended to be edited in Qt Design Studio only.
-It is supposed to be strictly declarative and only uses a subset of QML. If you edit
-this file manually, you might introduce QML code that is not supported by Qt Design Studio.
-Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on .ui.qml files.
-*/
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
 
 Rectangle {
@@ -41,6 +32,7 @@ Rectangle {
 
     property double totaleEntrate: 0
     property double totaleUscite: 0
+    property double budgetMensile: 0
     property double totale: totaleEntrate + totaleUscite
 
     FontLoader {
@@ -48,12 +40,17 @@ Rectangle {
         source: "fonts/Bangers-Regular.ttf"
     }
 
+    FontLoader {
+        id: zenDots
+        source: "fonts/ZenDots-Regular.ttf"
+    }
+
     StackLayout {
         id: stackLayout
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: nav.top
+        anchors.bottom: navBar.top
         anchors.leftMargin: 0
         anchors.topMargin: 0
 
@@ -65,11 +62,14 @@ Rectangle {
 
         }
 
+        Page3{
+
+        }
 
     }
 
     Rectangle {
-        id: nav
+        id: navBar
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
@@ -80,7 +80,7 @@ Rectangle {
         RowLayout {
             id: navigation
             anchors.centerIn: parent
-            spacing: 140
+            spacing: 70
             anchors.horizontalCenter: parent.horizontalCenter
 
             Text {
@@ -106,7 +106,21 @@ Rectangle {
                     onClicked: stackLayout.currentIndex = 1 // Cambia alla pagina Statistiche
                 }
             }
+
+            Text {
+                text: qsTr("Budgets")
+                color: stackLayout.currentIndex === 2 ? "#ffffff" : "#cccccc"
+                font.bold: true
+                font.pixelSize: 20
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: stackLayout.currentIndex = 2 // Cambia alla pagina Statistiche
+                }
+            }
+
         }
     }
+
 }
 

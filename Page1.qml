@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Controls
-import QtQuick.Layouts
 
 Rectangle {
     id: page1
@@ -39,22 +38,6 @@ Rectangle {
         id: animation
     }
 
-    ColorAnimation {
-        id: colorAnimation1
-        target: rectangle
-        property: "color"
-        to: "#2294c6"
-        from: Constants.backgroundColor
-    }
-
-    ColorAnimation {
-        id: colorAnimation2
-        target: rectangle
-        property: "color"
-        to: Constants.backgroundColor
-        from: "#2294c6"
-    }
-
     Rectangle {
         id: rectangle2
         x: 25
@@ -71,7 +54,8 @@ Rectangle {
             x: 156
             y: 307
             color: "#ffffff"
-            text: qsTr("Entrata")
+            text: qsTr("ENTRATA")
+            font.family: zenDots.name
             anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 25
             anchors.horizontalCenter: parent.horizontalCenter
@@ -84,12 +68,10 @@ Rectangle {
             anchors.fill: parent
             hoverEnabled: true
             cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
-            Connections {
-                target: entrateMouseArea
-                onClicked: {
-                    rectangle.isEntry = true
-                }
+            onClicked: {
+                rectangle.isEntry = true
             }
+
         }
     }
 
@@ -110,7 +92,8 @@ Rectangle {
             x: -49
             y: 307
             color: "#ffffff"
-            text: qsTr("Uscita")
+            text: qsTr("USCITA")
+            font.family: zenDots.name
             anchors.verticalCenter: parent.verticalCenter
             font.pixelSize: 25
             anchors.horizontalCenter: parent.horizontalCenter
@@ -123,12 +106,10 @@ Rectangle {
             anchors.fill: parent
             hoverEnabled: true
             cursorShape: containsMouse ? Qt.PointingHandCursor : Qt.ArrowCursor
-            Connections {
-                target: usciteMouseArea
-                onClicked: {
-                    rectangle.isEntry = false
-                }
+            onClicked: {
+                rectangle.isEntry = false
             }
+
         }
     }
 
@@ -165,25 +146,23 @@ Rectangle {
             horizontalAlignment: Text.AlignHCenter
             property string placeholderText: "IMPORTO"
 
-            Connections {
-                target: textInput
-                onTextChanged: {
-                    let regex = /^[0-9]*\.?[0-9]*$/
-                    // Consente solo numeri e un punto decimale
-                    if (!regex.test(textInput.text)) {
-                        textInput.text = textInput.text.replace(
-                                    /[^0-9.]/g,
-                                    "") // Rimuove caratteri non validi
-                        let dotCount = (textInput.text.match(/\./g)
-                                        || []).length
-                        if (dotCount > 1) {
-                            textInput.text = textInput.text.substring(
-                                        0,
-                                        textInput.text.lastIndexOf("."))
-                        }
+            onTextChanged: {
+                let regex = /^[0-9]*\.?[0-9]*$/
+                // Consente solo numeri e un punto decimale
+                if (!regex.test(textInput.text)) {
+                    textInput.text = textInput.text.replace(
+                                /[^0-9.]/g,
+                                "") // Rimuove caratteri non validi
+                    let dotCount = (textInput.text.match(/\./g)
+                                    || []).length
+                    if (dotCount > 1) {
+                        textInput.text = textInput.text.substring(
+                                    0,
+                                    textInput.text.lastIndexOf("."))
                     }
                 }
             }
+
         }
 
         Text {
@@ -215,49 +194,48 @@ Rectangle {
         }
         font.weight: Font.Bold
         font.pointSize: 20
-        Connections {
-            target: buttonAdd
-            onClicked: {
-                console.log("selectedIndex: " + selectedIndex
-                            + " TextInput: " + textInput.text)
-                if (selectedIndex == "Stipendio") {
-                    stipendiTotale = stipendiTotale + parseFloat(
-                                textInput.text)
-                    textInput.clear()
-                } else if (selectedIndex == "Prestiti") {
-                    prestitiTotale = prestitiTotale + parseFloat(
-                                textInput.text)
-                    textInput.clear()
-                } else if (selectedIndex == "Risparmi") {
-                    risparmiTotale = risparmiTotale + parseFloat(
-                                textInput.text)
-                    textInput.clear()
-                } else if (selectedIndex == "Vincite") {
-                    vinciteTotale = vinciteTotale + parseFloat(
-                                textInput.text)
-                    textInput.clear()
-                } else if (selectedIndex == "Affitto/Mutuo") {
-                    casaTotale = casaTotale + parseFloat(textInput.text)
-                    textInput.clear()
-                } else if (selectedIndex == "Bollette") {
-                    bolletteTotale = bolletteTotale + parseFloat(
-                                textInput.text)
-                    textInput.clear()
-                } else if (selectedIndex == "Spesa") {
-                    spesaTotale = spesaTotale + parseFloat(
-                                textInput.text)
-                    textInput.clear()
-                } else if (selectedIndex == "Benzina") {
-                    benzinaTotale = benzinaTotale + parseFloat(
-                                textInput.text)
-                    textInput.clear()
-                }
 
-                totaleEntrate = stipendiTotale + prestitiTotale
-                        + risparmiTotale + vinciteTotale
-                totaleUscite = casaTotale + bolletteTotale + spesaTotale + benzinaTotale
+        onClicked: {
+            console.log("selectedIndex: " + selectedIndex
+                        + " TextInput: " + textInput.text)
+            if (selectedIndex == "Stipendio") {
+                stipendiTotale = stipendiTotale + parseFloat(
+                            textInput.text)
+                textInput.clear()
+            } else if (selectedIndex == "Prestiti") {
+                prestitiTotale = prestitiTotale + parseFloat(
+                            textInput.text)
+                textInput.clear()
+            } else if (selectedIndex == "Risparmi") {
+                risparmiTotale = risparmiTotale + parseFloat(
+                            textInput.text)
+                textInput.clear()
+            } else if (selectedIndex == "Vincite") {
+                vinciteTotale = vinciteTotale + parseFloat(
+                            textInput.text)
+                textInput.clear()
+            } else if (selectedIndex == "Affitto/Mutuo") {
+                casaTotale = casaTotale + parseFloat(textInput.text)
+                textInput.clear()
+            } else if (selectedIndex == "Bollette") {
+                bolletteTotale = bolletteTotale + parseFloat(
+                            textInput.text)
+                textInput.clear()
+            } else if (selectedIndex == "Spesa") {
+                spesaTotale = spesaTotale + parseFloat(
+                            textInput.text)
+                textInput.clear()
+            } else if (selectedIndex == "Benzina") {
+                benzinaTotale = benzinaTotale + parseFloat(
+                            textInput.text)
+                textInput.clear()
             }
+
+            totaleEntrate = stipendiTotale + prestitiTotale
+                    + risparmiTotale + vinciteTotale
+            totaleUscite = casaTotale + bolletteTotale + spesaTotale + benzinaTotale
         }
+
     }
 
     Button {
@@ -267,7 +245,7 @@ Rectangle {
         width: 390
         height: 40
         Text {
-            text: qsTr("Categorie")
+            text: qsTr("CATEGORIE")
             color: "white"
             anchors.centerIn: parent
         }
@@ -277,9 +255,6 @@ Rectangle {
             color: "#3c9302"
             radius: 25
         }
-        Connections {
-            target: button1
-            onClicked: popup.open()
-        }
+        onClicked: popup.open()
     }
 }
