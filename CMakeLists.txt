@@ -28,6 +28,7 @@ qt_add_qml_module(appMoneyApp2
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_
+QML_FILES AuthPage.qml
 
 
 # If you are developing for iOS or macOS you should consider setting an
