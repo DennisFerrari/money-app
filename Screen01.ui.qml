@@ -62,7 +62,7 @@ Rectangle {
 
         }
 
-        Page3{
+        AuthPage{
 
         }
 
