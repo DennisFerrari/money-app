@@ -32,6 +32,7 @@ Rectangle {
 
     property double totaleEntrate: 0
     property double totaleUscite: 0
+    property double budgetMensile: 0
     property double totale: totaleEntrate + totaleUscite
 
     FontLoader {
@@ -61,6 +62,10 @@ Rectangle {
 
         }
 
+        Page3{
+
+        }
+
     }
 
     Rectangle {
@@ -75,7 +80,7 @@ Rectangle {
         RowLayout {
             id: navigation
             anchors.centerIn: parent
-            spacing: 140
+            spacing: 70
             anchors.horizontalCenter: parent.horizontalCenter
 
             Text {
@@ -99,6 +104,18 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: stackLayout.currentIndex = 1 // Cambia alla pagina Statistiche
+                }
+            }
+
+            Text {
+                text: qsTr("Budgets")
+                color: stackLayout.currentIndex === 2 ? "#ffffff" : "#cccccc"
+                font.bold: true
+                font.pixelSize: 20
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: stackLayout.currentIndex = 2 // Cambia alla pagina Statistiche
                 }
             }
 

@@ -20,7 +20,7 @@ qt_add_qml_module(appMoneyApp2
         QML_FILES Screen01.ui.qml
         QML_FILES Page1.qml
         QML_FILES Page2.qml
-        QML_FILES
+        QML_FILES Page3.qml
         QML_FILES PopUpCategories.qml
         RESOURCES
             "fonts/Bangers-Regular.ttf"
@@ -28,6 +28,7 @@ qt_add_qml_module(appMoneyApp2
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_
+
 
 # If you are developing for iOS or macOS you should consider setting an
 # explicit, fixed bundle identifier manually though.
