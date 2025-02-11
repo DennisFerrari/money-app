@@ -57,7 +57,7 @@ Rectangle {
     Slider {
         id: budgetId
         from: 0
-        value: 0
+        value: labelvalue
         to: 2000
         anchors.right: parent.right
         anchors.rightMargin: 20
@@ -85,24 +85,41 @@ Rectangle {
 
     Text {
         text: budgetId.from
-        anchors.left: budgetId.left
+        anchors.horizontalCenter: budgetId.left
         anchors.bottom: budgetId.top
-        anchors.topMargin: 3
+        anchors.bottomMargin: 6
     }
 
     Text {
         text: budgetId.to
-        anchors.right: budgetId.right
+        anchors.horizontalCenter: budgetId.right
         anchors.bottom: budgetId.top
-        anchors.topMargin: 3
+        anchors.bottomMargin: 6
     }
 
-    Text {
+    TextInput {
         id: labelValue
         text: budgetId.value.toFixed(0)
         anchors.horizontalCenter: budgetId.horizontalCenter
         anchors.top: budgetId.bottom
         anchors.topMargin: 20
+        font.pixelSize: 25
+        onTextChanged: {
+            let regex = /^[0-9]*\.?[0-9]*$/
+            // Consente solo numeri e un punto decimale
+            if (!regex.test(labelValue.text)) {
+                labelValue.text = labelValue.text.replace(
+                            /[^0-9.]/g,
+                            "") // Rimuove caratteri non validi
+                let dotCount = (labelValue.text.match(/\./g)
+                                || []).length
+                if (dotCount > 1) {
+                    labelValue.text = labelValue.text.substring(
+                                0,
+                                labelValue.text.lastIndexOf("."))
+                }
+            }
+        }
     }
 
     Button{
@@ -124,7 +141,7 @@ Rectangle {
         }
 
         onClicked :{
-            budgetMensile = budgetId.value.toFixed(0)
+            budgetMensile = labelValue.text
             console.log(budgetMensile)
         }
     }
@@ -150,6 +167,20 @@ Rectangle {
         anchors.leftMargin: 8
         font.pixelSize: 25
         font.bold: true
+    }
+
+    Text{
+        anchors.horizontalCenter: budgetId.left
+        anchors.bottom: budgetId.bottom
+        font.pixelSize: 24
+        text: "|"
+    }
+
+    Text{
+        anchors.horizontalCenter: budgetId.right
+        anchors.bottom: budgetId.bottom
+        font.pixelSize: 24
+        text: "|"
     }
 
 }
