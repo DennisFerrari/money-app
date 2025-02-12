@@ -62,6 +62,10 @@ Rectangle {
 
         }
 
+        Page3 {
+
+        }
+
         AuthPage{
 
         }
@@ -77,17 +81,18 @@ Rectangle {
         color: "#3c9302"
         topRightRadius: 20
         topLeftRadius: 20
-        RowLayout {
+        Row {
             id: navigation
             anchors.centerIn: parent
-            spacing: 70
+            spacing: 60
             anchors.horizontalCenter: parent.horizontalCenter
+            height: 20
 
-            Text {
-                text: qsTr("Inserimento")
-                color: stackLayout.currentIndex === 0 ? "#ffffff" : "#cccccc"
-                font.bold: true
-                font.pixelSize: 20
+            Image {
+                source: "icons/homepage.svg"
+                height: 30
+                width: 30
+                opacity: stackLayout.currentIndex === 0 ? 1 : 0.6
 
                 MouseArea {
                     anchors.fill: parent
@@ -95,11 +100,11 @@ Rectangle {
                 }
             }
 
-            Text {
-                text: qsTr("Statistiche")
-                color: stackLayout.currentIndex === 1 ? "#ffffff" : "#cccccc"
-                font.bold: true
-                font.pixelSize: 20
+            Image {
+                source: "icons/stats.svg"
+                height: 30
+                width: 30
+                opacity: stackLayout.currentIndex === 1 ? 1 : 0.6
 
                 MouseArea {
                     anchors.fill: parent
@@ -107,15 +112,27 @@ Rectangle {
                 }
             }
 
-            Text {
-                text: qsTr("Budgets")
-                color: stackLayout.currentIndex === 2 ? "#ffffff" : "#cccccc"
-                font.bold: true
-                font.pixelSize: 20
+            Image {
+                source: "icons/budget.svg"
+                height: 30
+                width: 30
+                opacity: stackLayout.currentIndex === 2 ? 1 : 0.6
 
                 MouseArea {
                     anchors.fill: parent
                     onClicked: stackLayout.currentIndex = 2 // Cambia alla pagina Statistiche
+                }
+            }
+
+            Image {
+                source: "icons/login.svg"
+                height: 30
+                width: 30
+                opacity: stackLayout.currentIndex === 3 ? 1 : 0.6
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: stackLayout.currentIndex = 3 // Cambia alla pagina Statistiche
                 }
             }
 

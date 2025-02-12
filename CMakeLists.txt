@@ -26,6 +26,10 @@ qt_add_qml_module(appMoneyApp2
         RESOURCES
             "fonts/Bangers-Regular.ttf"
             "fonts/ZenDots-Regular.ttf"
+            "icons/budget.svg"
+            "icons/homepage.svg"
+            "icons/stats.svg"
+            "icons/login.svg"
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_
