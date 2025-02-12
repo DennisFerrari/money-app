@@ -118,7 +118,7 @@ Rectangle {
         x: 118
         y: 109
         color: "#3c9302"
-        text: qsTr("INSERIMENTO")
+        text: qsTr("INSERIMENTO DATI")
         font.pixelSize: 30
         font.bold: true
         anchors.horizontalCenterOffset: 0
