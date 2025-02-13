@@ -43,10 +43,11 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
+
     Text {
         id: userLabel
         anchors.top: subtitlePage2.bottom
-        anchors.topMargin: 30
+        anchors.topMargin: 70
         anchors.horizontalCenter: parent.horizontalCenter
         text: "USERNAME"
     }
@@ -55,7 +56,10 @@ Rectangle {
         id: userCamp
         anchors.top: userLabel.bottom
         anchors.topMargin: 10
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 15
+        anchors.rightMargin: 15
         width: 200
         color: "Black"
         background: Rectangle {
@@ -77,8 +81,10 @@ Rectangle {
         id: pswCamp
         anchors.top: pswLabel.bottom
         anchors.topMargin: 10
-        anchors.horizontalCenter: parent.horizontalCenter
-        width: 200
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 15
+        anchors.rightMargin: 15
         color: "Black"
         background: Rectangle {
             color: "white"
@@ -89,11 +95,13 @@ Rectangle {
 
     Button {
         id: loginButton
-        anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: pswCamp.bottom
         anchors.topMargin: 30
-        height: 15
-        width: 100
+        height: 30
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 15
+        anchors.rightMargin: 15
         Text {
             text: "ACCEDI"
             anchors.centerIn: parent
