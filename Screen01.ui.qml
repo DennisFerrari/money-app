@@ -34,6 +34,7 @@ Rectangle {
     property double totaleUscite: 0
     property double budgetMensile: 0
     property double totale: totaleEntrate + totaleUscite
+    property string logMessage
 
     FontLoader {
         id: bangers
@@ -43,6 +44,14 @@ Rectangle {
     FontLoader {
         id: zenDots
         source: "fonts/ZenDots-Regular.ttf"
+    }
+
+    AuthPage{
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        z: 5
     }
 
     StackLayout {
@@ -63,10 +72,6 @@ Rectangle {
         }
 
         Page3 {
-
-        }
-
-        AuthPage{
 
         }
 
@@ -121,18 +126,6 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: stackLayout.currentIndex = 2 // Cambia alla pagina Statistiche
-                }
-            }
-
-            Image {
-                source: "icons/login.svg"
-                height: 30
-                width: 30
-                opacity: stackLayout.currentIndex === 3 ? 1 : 0.6
-
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: stackLayout.currentIndex = 3 // Cambia alla pagina Statistiche
                 }
             }
 

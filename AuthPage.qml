@@ -16,6 +16,7 @@ Rectangle {
         }
         orientation: Gradient.Vertical
     }
+
     Text {
         id: titlePage2
         x: 135
@@ -60,6 +61,7 @@ Rectangle {
         background: Rectangle {
             color: "white"
             anchors.fill: parent
+            radius: 10
         }
     }
 
@@ -81,10 +83,12 @@ Rectangle {
         background: Rectangle {
             color: "white"
             anchors.fill: parent
+            radius: 10
         }
     }
 
     Button {
+        id: loginButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: pswCamp.bottom
         anchors.topMargin: 30
@@ -99,5 +103,25 @@ Rectangle {
             anchors.fill: parent
             radius: 20
         }
+        onClicked: {
+            if (userCamp.text === "admin" && pswCamp.text === "admin") {
+                logMessage = "User e password corretti! Accedo..."
+                loginMessageLabel.color = "green"
+                authPage.visible = false
+            } else {
+                logMessage = "User e/o password non corretti!"
+                loginMessageLabel.color = "red"
+            }
+        }
+    }
+
+    Text {
+        id: loginMessageLabel
+        text: logMessage
+        anchors.top: loginButton.bottom
+        anchors.topMargin: 10
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.pixelSize:20
+        color: "black"
     }
 }
