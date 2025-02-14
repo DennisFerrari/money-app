@@ -34,6 +34,7 @@ Rectangle {
     property double totaleUscite: 0
     property double budgetMensile: 0
     property double totale: totaleEntrate + totaleUscite
+    property string logMessage
 
     FontLoader {
         id: bangers
@@ -43,6 +44,14 @@ Rectangle {
     FontLoader {
         id: zenDots
         source: "fonts/ZenDots-Regular.ttf"
+    }
+
+    AuthPage{
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        z: 5
     }
 
     StackLayout {
@@ -62,7 +71,7 @@ Rectangle {
 
         }
 
-        Page3{
+        Page3 {
 
         }
 
@@ -77,17 +86,18 @@ Rectangle {
         color: "#3c9302"
         topRightRadius: 20
         topLeftRadius: 20
-        RowLayout {
+        Row {
             id: navigation
             anchors.centerIn: parent
-            spacing: 70
+            spacing: 60
             anchors.horizontalCenter: parent.horizontalCenter
+            height: 20
 
-            Text {
-                text: qsTr("Inserimento")
-                color: stackLayout.currentIndex === 0 ? "#ffffff" : "#cccccc"
-                font.bold: true
-                font.pixelSize: 20
+            Image {
+                source: "icons/homepage.svg"
+                height: 30
+                width: 30
+                opacity: stackLayout.currentIndex === 0 ? 1 : 0.6
 
                 MouseArea {
                     anchors.fill: parent
@@ -95,11 +105,11 @@ Rectangle {
                 }
             }
 
-            Text {
-                text: qsTr("Statistiche")
-                color: stackLayout.currentIndex === 1 ? "#ffffff" : "#cccccc"
-                font.bold: true
-                font.pixelSize: 20
+            Image {
+                source: "icons/stats.svg"
+                height: 30
+                width: 30
+                opacity: stackLayout.currentIndex === 1 ? 1 : 0.6
 
                 MouseArea {
                     anchors.fill: parent
@@ -107,11 +117,11 @@ Rectangle {
                 }
             }
 
-            Text {
-                text: qsTr("Budgets")
-                color: stackLayout.currentIndex === 2 ? "#ffffff" : "#cccccc"
-                font.bold: true
-                font.pixelSize: 20
+            Image {
+                source: "icons/budget.svg"
+                height: 30
+                width: 30
+                opacity: stackLayout.currentIndex === 2 ? 1 : 0.6
 
                 MouseArea {
                     anchors.fill: parent
